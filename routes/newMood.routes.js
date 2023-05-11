@@ -6,7 +6,7 @@ router.post("/moods/create", (req, res, next) => {
   const { day, daytime, mood } = req.body;
 
   if (day === '' || daytime === '' || mood === '') {
-    res.status(400).json({ message: "Provide data." });
+    res.status(400).json({ message: "Please provide data." });
     return;
   }
 
@@ -14,7 +14,6 @@ router.post("/moods/create", (req, res, next) => {
     .then((createdMood) => {
       const { day, daytime, mood } = createdMood;
       const newMood = { day, daytime, mood };
-
       res.status(201).json({ mood: newMood });
     })
     .catch((err) => {
