@@ -1,22 +1,10 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
-const moodSchema = new Schema(
-    {
-      day: {
-        type: String,
-        required: [true, 'Day is required.'],
-      },
-      moodMorning: {
-        type: String,
-        required: [true, 'MoodMorning is required.']
-      },
-      moodEvening: {
-        type: String,
-        required: [true, 'MoodEvening is required.']
-    },}
-  );
+const moodSchema = new Schema({
+  day: { type: String, unique: true, required: true },
+  daytime: { type: String, required: true },
+  mood: { type: String, required: true },
+});
 
-
-const Mood = model("Mood", userSchema);
-
-module.exports = Mood;
+module.exports = model("Mood", moodSchema);
