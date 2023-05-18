@@ -6,7 +6,7 @@ router.get("/", (req, res, next) => {
   res.json("All good in here");
 });
 
-router.put('/mood/:id/user', (req, res, next) => {
+router.put(`${process.env.REACT_APP_API_URL}/mood/:id/user`, (req, res, next) => {
   const { user } = req.body;
   const { id } = req.params;
 
@@ -20,7 +20,7 @@ router.put('/mood/:id/user', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.put('/user/:id/email', (req, res, next) => {
+router.put(`${process.env.REACT_APP_API_URL}/user/:id/email`, (req, res, next) => {
   const { email } = req.body;
   const { id } = req.params;
 
