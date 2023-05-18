@@ -12,7 +12,6 @@ const saltRounds = 10;
 // POST /auth/signup  - Creates a new user in the database
 router.post('/signup', (req, res, next) => {
   const { email, password } = req.body;
-  console.log("BODY:", req.body)
   // Check if email or password or name are provided as empty string 
   if (email === '' || password === '') {
     res.status(400).json({ message: "Provide email und password" });
@@ -32,7 +31,6 @@ router.post('/signup', (req, res, next) => {
     res.status(400).json({ message: 'Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.' });
     return;
   }
-
 
   // Check the users collection if a user with the same email already exists
   User.findOne({ email })
@@ -67,6 +65,7 @@ router.post('/signup', (req, res, next) => {
       res.status(500).json({ message: "Internal Server Error" })
     });
 });
+
 
 // POST  /auth/login - Verifies email and password and returns a JWT
 router.post('/login', (req, res, next) => {

@@ -6,11 +6,11 @@ router.get("/", (req, res, next) => {
   res.json("All good in here");
 });
 
-router.put(`${process.env.REACT_APP_API_URL}/mood/:id/user`, (req, res, next) => {
+router.put('/mood/:id/user', (req, res, next) => {
   const { user } = req.body;
   const { id } = req.params;
 
-  Mood.findByIdAndUpdate(id, { user }, { new: true })
+Mood.findByIdAndUpdate(id, { user }, { new: true })
     .then((mood) => {
       if (!mood) {
         return res.status(404).json({ message: 'Mood nicht gefunden' });
@@ -20,7 +20,7 @@ router.put(`${process.env.REACT_APP_API_URL}/mood/:id/user`, (req, res, next) =>
     .catch((err) => next(err));
 });
 
-router.put(`${process.env.REACT_APP_API_URL}/user/:id/email`, (req, res, next) => {
+router.put('/user/:id/email', (req, res, next) => {
   const { email } = req.body;
   const { id } = req.params;
 
